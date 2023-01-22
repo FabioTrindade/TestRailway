@@ -45,10 +45,7 @@ jobs:
         env:
           ConnectionStrings.Default: ${{ secrets.DB_CONNECTION_STRING }}
       
-      - name: Deploy to Heroku
-        uses: AkhileshNS/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          usedocker: true
+      - name: Deploy  to Railway
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
