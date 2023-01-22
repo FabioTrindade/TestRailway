@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  testrailway:
+    image: ${DOCKER_REGISTRY-}testrailway
+    build:
+      context: .
+      dockerfile: ./Dockerfile
