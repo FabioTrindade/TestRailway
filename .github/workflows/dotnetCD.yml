@@ -36,7 +36,8 @@ jobs:
     if: success() && github.ref == 'refs/heads/main'
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: App Settings Variable Substitution
         uses: microsoft/variable-substitution@v1
@@ -44,7 +45,10 @@ jobs:
           files: 'appsettings.json'
         env:
           ConnectionStrings.Default: ${{ secrets.DB_CONNECTION_STRING }}
-      
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
       - name: Deploy  to Railway
         run: railway up
         env:
